@@ -4,7 +4,7 @@ from brownie import Lottery, config, network
 # deploy needs _priceFeedAddress, _vrfCoordinator, _link, _fee, _keyhash
 def deploy_lottery():
     account = get_account(id="testAcc")
-    lotter = Lottery.deploy(
+    Lottery.deploy(
         get_contract("eth_usd_price_feed").address,
         get_contract("vrf_coordinator").address,
         get_contract("link_token").address,
