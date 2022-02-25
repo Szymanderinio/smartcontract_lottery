@@ -8,7 +8,7 @@ import os
 # deploy needs _priceFeedAddress, _vrfCoordinator, _link, _fee, _keyhash
 def deploy_lottery():
     account = get_account()
-    Lottery.deploy(
+    lottery = Lottery.deploy(
         get_contract("eth_usd_price_feed").address,
         get_contract("vrf_coordinator").address,
         get_contract("link_token").address,
@@ -19,6 +19,7 @@ def deploy_lottery():
         # if there is no verify key = False
     )
     print("Deployed lottery!")
+    return lottery
 
 
 def start_lottery():
@@ -53,3 +54,6 @@ def main():
     start_lottery()
     enter_lottery()
     end_lottery()
+
+    # unit test: development network
+    # integration test: Testnet
